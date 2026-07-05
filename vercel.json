@@ -1,12 +1,11 @@
 {
-  "version": 2,
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "installCommand": "npm install --prefix frontend",
+  "buildCommand": "npm --prefix frontend run build",
   "builds": [
     {
       "src": "frontend/package.json",
       "use": "@vercel/next"
     }
-  ],
-  "routes": [
-    { "src": "/(.*)", "dest": "/frontend/$1" }
   ]
 }
