@@ -82,7 +82,7 @@ export async function DoctorLogin(req, res) {
     res.cookie("doctor_token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
       maxAge: 6 * 24 * 60 * 60 * 1000,
     });
 
@@ -101,6 +101,8 @@ export async function DoctorLogout(req, res) {
   try {
     res.cookie("doctor_token", "", {
       httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
       expires: new Date(0),
     });
     res.json({ status: 200, msg: "Doctor logout successful" });
