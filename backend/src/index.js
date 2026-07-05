@@ -23,7 +23,11 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://frontend-merntask-project.vercel.app"],
+    origin: [
+      "http://localhost:3000",
+      "https://frontend-merntask-project.vercel.app",
+      "https://ideamagix-project-1.vercel.app",
+    ],
     credentials: true,
   })
 );
